@@ -1,3 +1,5 @@
 == README
 
 This tennis kata is to practice using test-driven development (red-green-refactor cycle).
+
+The key stuff is in app/models/tennis_game.rb and test/models/tennis_game_test.rb
