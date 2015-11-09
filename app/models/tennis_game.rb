@@ -9,19 +9,15 @@ class TennisGame < ActiveRecord::Base
 	end
 
 
+	TENNIS_SCORE_MAP = {
+		0 => "love",
+		1 => "15",
+		2 => "30",
+		3 => "40",
+	}
 
 	def translate(score)
-		if score == 0
-			"love"
-		elsif score == 1
-			"15"
-		elsif score == 2
-			"30"
-		elsif score == 3
-			"40"
-		else
-			score
-		end
+		TENNIS_SCORE_MAP[score]
 	end
 
 	def won_point(playerName)
