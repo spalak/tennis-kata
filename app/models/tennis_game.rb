@@ -22,9 +22,9 @@ class TennisGame < ActiveRecord::Base
 
 	def won_point(playerName)
 		if playerName == @player_one
-			@p1_points +=1
+			@p1_points += 1
 		elsif playerName == @player_two
-			@p2_points +=1
+			@p2_points += 1
 		else
 				@p2_points = 100
 		end
@@ -37,7 +37,7 @@ class TennisGame < ActiveRecord::Base
 		
 		if (@p1_points < 3 && @p2_points < 3)
 			score_before_deuce_or_defeat(p1_tenScore, p2_tenScore)
-		elsif ((@p1_points - @p2_points)==1 && @p1_points > 3) || ((@p2_points - @p1_points)==1 && @p2_points > 3)
+		elsif ((@p1_points - @p2_points) == 1 && @p1_points > 3) || ((@p2_points - @p1_points) == 1 && @p2_points > 3)
 			score_after_deuce(@p1_points, @p2_points)
 		elsif (@p1_points == @p2_points && @p1_points >= 3)
 			"Deuce"
