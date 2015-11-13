@@ -6,66 +6,66 @@ class TennisGameTest < ActiveSupport::TestCase
   # end
 
   test "score starts as love-love" do
-  	game = TennisGame.new("Mike", "Dave")
-  	assert_equal("love-love", game.score)
+    game = TennisGame.new("Mike", "Dave")
+    assert_equal("love-love", game.score)
   end
 
   test "score goes to 15-love when a player scores" do
-  	game = TennisGame.new("Mike", "Dave")
-  	game.won_point("Mike")
-  	assert_equal("15-love", game.score)
+    game = TennisGame.new("Mike", "Dave")
+    game.won_point("Mike")
+    assert_equal("15-love", game.score)
   end
 
   test "score goes to 15-15 when second player scores" do
-  	game = TennisGame.new("Mike", "Dave")
-  	game.won_point("Mike")
-  	game.won_point("Dave")
-  	assert_equal("15-15", game.score)
+    game = TennisGame.new("Mike", "Dave")
+    game.won_point("Mike")
+    game.won_point("Dave")
+    assert_equal("15-15", game.score)
   end
 
   test "score goes to 30-15 when first player scores agains" do
-  	game = TennisGame.new("Mike", "Dave")
-  	game.won_point("Mike")
-  	game.won_point("Dave")
-  	game.won_point("Mike")
-  	assert_equal("30-15", game.score)
+    game = TennisGame.new("Mike", "Dave")
+    game.won_point("Mike")
+    game.won_point("Dave")
+    game.won_point("Mike")
+    assert_equal("30-15", game.score)
   end
 
   test "score goes to 40-15 when first player scores again" do
-  	game = TennisGame.new("Mike", "Dave")
-  	game.won_point("Mike")
-  	game.won_point("Dave")
-  	game.won_point("Mike")
-  	game.won_point("Mike")
-  	assert_equal("40-15", game.score)
+    game = TennisGame.new("Mike", "Dave")
+    game.won_point("Mike")
+    game.won_point("Dave")
+    game.won_point("Mike")
+    game.won_point("Mike")
+    assert_equal("40-15", game.score)
   end
 
   test "score goes to 40-30 when first player scores again" do
-  	game = TennisGame.new("Mike", "Dave")
-  	3.times { game.won_point('Mike') }
-  	2.times { game.won_point('Dave') }
-  	assert_equal("40-30", game.score)
+    game = TennisGame.new("Mike", "Dave")
+    3.times { game.won_point('Mike') }
+    2.times { game.won_point('Dave') }
+    assert_equal("40-30", game.score)
   end
 
   test "first player wins game if he gets to 4 points and second player only has 2 or fewer" do
-  	game = TennisGame.new("Mike", "Dave")
-  	4.times { game.won_point('Mike') }
-  	2.times { game.won_point('Dave') }
-  	assert_equal("Mike defeats Dave", game.score)
+    game = TennisGame.new("Mike", "Dave")
+    4.times { game.won_point('Mike') }
+    2.times { game.won_point('Dave') }
+    assert_equal("Mike defeats Dave", game.score)
   end
 
   test "second player wins game if he gets to 4 points and first player only has 2 or fewer" do
-  	game = TennisGame.new("Mike", "Dave")
-  	2.times { game.won_point('Mike') }
-  	4.times { game.won_point('Dave') }
-  	assert_equal("Dave defeats Mike", game.score)
+    game = TennisGame.new("Mike", "Dave")
+    2.times { game.won_point('Mike') }
+    4.times { game.won_point('Dave') }
+    assert_equal("Dave defeats Mike", game.score)
   end
 
   test "both players have 3 points, score is deuce" do
-  	game = TennisGame.new("Mike", "Dave")
-  	3.times { game.won_point('Mike') }
-  	3.times { game.won_point('Dave') }
-  	assert_equal("Deuce", game.score)
+    game = TennisGame.new("Mike", "Dave")
+    3.times { game.won_point('Mike') }
+    3.times { game.won_point('Dave') }
+    assert_equal("Deuce", game.score)
   end
 
   test "first player gets to 3 points, second player to 3 points, then first player scores, score is 'Advantage In'" do
@@ -116,10 +116,3 @@ class TennisGameTest < ActiveSupport::TestCase
     assert_equal('Mike defeats Dave', game.score)
   end
 end
-
-
-
-
-
-
-
